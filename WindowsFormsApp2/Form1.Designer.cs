@@ -406,6 +406,7 @@
             this.SlapMark.Name = "SlapMark";
             this.SlapMark.Size = new System.Drawing.Size(182, 21);
             this.SlapMark.TabIndex = 5;
+            this.SlapMark.SelectedIndexChanged += new System.EventHandler(this.SlapMark_SelectedIndexChanged);
             // 
             // ReceiptNo
             // 
@@ -467,6 +468,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(258, 21);
             this.comboBox1.TabIndex = 20;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form1
             // 

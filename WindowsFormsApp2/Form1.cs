@@ -69,13 +69,23 @@ namespace WindowsFormsApp2
 
         private void ReceiptNo_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void configurationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // New up the condfig page
             Form2 Config = new Form2();
+        }
+
+        private void SlapMark_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
