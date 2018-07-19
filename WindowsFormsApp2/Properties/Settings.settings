@@ -23,5 +23,8 @@
     <Setting Name="ScaleLID" Type="System.String" Scope="User">
       <Value Profile="(Default)">WS01</Value>
     </Setting>
+    <Setting Name="CrateWeight" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2.40</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

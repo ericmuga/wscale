@@ -106,5 +106,17 @@ namespace WindowsFormsApp2.Properties {
                 this["ScaleLID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.40")]
+        public string CrateWeight {
+            get {
+                return ((string)(this["CrateWeight"]));
+            }
+            set {
+                this["CrateWeight"] = value;
+            }
+        }
     }
 }

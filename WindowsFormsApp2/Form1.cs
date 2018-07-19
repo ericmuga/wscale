@@ -19,7 +19,49 @@ namespace WindowsFormsApp2
             {
 
                 User.Text = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                // Initialize the screen items
 
+                ScaleID.Text = Properties.Settings.Default.ScaleLID;
+
+                //fake reading before connecting to the scale
+                Weight.Text = "80.00";
+                CrateWeight.Text = Properties.Settings.Default.CrateWeight;
+                double CR = 0.0; double WT = 0.0; double NT;
+
+                try
+                {
+                    CR = Convert.ToDouble(CrateWeight.Text);
+                    
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Invalid Format in the crate weight");
+                }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("The crate weight is too large");
+                }
+
+                try
+                {
+                    WT = Convert.ToDouble(Weight.Text);
+
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Invalid Format in the Scale reading");
+                }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("The scale reading is too large");
+                }
+
+
+                NT = WT - CR;
+
+                NetWeight.Text = Convert.ToString(NT);
+
+               
 
             }
 
