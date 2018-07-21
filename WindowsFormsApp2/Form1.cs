@@ -76,6 +76,7 @@ namespace WindowsFormsApp2
         {
             // New up the condfig page
             Form2 Config = new Form2();
+            Config.Show();
         }
 
         private void SlapMark_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,6 +87,18 @@ namespace WindowsFormsApp2
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void User_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void importDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // New up the condfig page
+            Form3 ImportData = new Form3();
+            ImportData.Show();
         }
     }
 

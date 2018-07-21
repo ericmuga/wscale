@@ -51,6 +51,8 @@
             this.ScaleID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.Weighed = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -68,8 +70,6 @@
             this.ReceiptNo = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.UserDetails.SuspendLayout();
             this.ScaleStatus.SuspendLayout();
@@ -131,6 +131,7 @@
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
             this.importDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importDataToolStripMenuItem.Text = "Import Data";
+            this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
             // 
             // exportDataToolStripMenuItem
             // 
@@ -177,6 +178,7 @@
             this.User.ReadOnly = true;
             this.User.Size = new System.Drawing.Size(165, 20);
             this.User.TabIndex = 2;
+            this.User.TextChanged += new System.EventHandler(this.User_TextChanged);
             // 
             // UserLabel
             // 
@@ -290,6 +292,42 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "G0110, Pig, Carcass",
+            "G0111, Sow, Carcass",
+            "G0113, Suckling. Carcass",
+            "G0114, Condemned Pig, Carcass",
+            "G0118, Condemned Suckling, Carcass",
+            "G0112, Casualty, Carcass",
+            "G0116, Dead Pig - Rosemark",
+            "G0117, Dead Sow - RM",
+            "G0119, Dead Pig [Lairage] -3rdP Fmr",
+            "G0120, Dead Pig [Self Trp] -3rdP Fmr",
+            "G0121, Scrapped Pig, Carcass",
+            "G0122, Dead Sow - Rosemark",
+            "",
+            "",
+            "",
+            "",
+            ""});
+            this.comboBox1.Location = new System.Drawing.Point(109, 86);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(258, 21);
+            this.comboBox1.TabIndex = 20;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(24, 89);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Carcass Type";
             // 
             // Weighed
             // 
@@ -433,42 +471,6 @@
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Receipt Number";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(24, 89);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 13);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "Carcass Type";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "G0110, Pig, Carcass",
-            "G0111, Sow, Carcass",
-            "G0113, Suckling. Carcass",
-            "G0114, Condemned Pig, Carcass",
-            "G0118, Condemned Suckling, Carcass",
-            "G0112, Casualty, Carcass",
-            "G0116, Dead Pig - Rosemark",
-            "G0117, Dead Sow - RM",
-            "G0119, Dead Pig [Lairage] -3rdP Fmr",
-            "G0120, Dead Pig [Self Trp] -3rdP Fmr",
-            "G0121, Scrapped Pig, Carcass",
-            "G0122, Dead Sow - Rosemark",
-            "",
-            "",
-            "",
-            "",
-            ""});
-            this.comboBox1.Location = new System.Drawing.Point(109, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(258, 21);
-            this.comboBox1.TabIndex = 20;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
