@@ -33,14 +33,12 @@
             this.ImportPath = new System.Windows.Forms.TextBox();
             this.BrowseImportFile = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Persist = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Persist);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.ImportPath);
             this.groupBox1.Controls.Add(this.BrowseImportFile);
@@ -87,15 +85,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(844, 294);
             this.dataGridView1.TabIndex = 4;
             // 
-            // Persist
-            // 
-            this.Persist.Location = new System.Drawing.Point(554, 19);
-            this.Persist.Name = "Persist";
-            this.Persist.Size = new System.Drawing.Size(91, 23);
-            this.Persist.TabIndex = 4;
-            this.Persist.Text = "Save";
-            this.Persist.UseVisualStyleBackColor = true;
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +108,5 @@
         private System.Windows.Forms.Button BrowseImportFile;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button Persist;
     }
 }

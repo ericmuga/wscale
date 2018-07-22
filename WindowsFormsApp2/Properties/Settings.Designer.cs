@@ -61,7 +61,7 @@ namespace WindowsFormsApp2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fcl-nav-pr")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fcl-weigh.database.windows.net,1433")]
         public string Server {
             get {
                 return ((string)(this["Server"]));
@@ -73,7 +73,7 @@ namespace WindowsFormsApp2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fcl-weigh")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fcl-weighing")]
         public string Database {
             get {
                 return ((string)(this["Database"]));

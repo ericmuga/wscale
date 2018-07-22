@@ -8,14 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
+
 
 namespace WindowsFormsApp2
 {
     public partial class Form3 : Form
     {
+        string _connectionString = $"Server={Properties.Settings.Default.Server};Initial Catalog={Properties.Settings.Default.Database};Persist Security Info=False;User ID={Properties.Settings.Default.UserName};Password={Properties.Settings.Default.Password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private string[] loadedInput = null;
         public Form3()
         {
             InitializeComponent();
+
+            
+
         }
 
         private void BrowseImportFile_Click(object sender, EventArgs e)
@@ -55,54 +62,93 @@ namespace WindowsFormsApp2
 
                 dt.Columns.Add("EnrolmentNo", typeof(string));
                 dt.Columns.Add("ReceiptNo", typeof(string));
+                dt.Columns.Add("VendorTag", typeof(string));
                 dt.Columns.Add("VendorNo", typeof(string));
                 dt.Columns.Add("VendorName", typeof(string));
                 dt.Columns.Add("ReceiptDate", typeof(string));
                 dt.Columns.Add("ItemNo", typeof(string));
                 dt.Columns.Add("Desciption", typeof(string));
                 dt.Columns.Add("ReceivedQty", typeof(string));
-               
-                // loop the list 
-                foreach (string[] item in lststr)
-                { 
-                    if ((item.Length) != 8) {
-                        MessageBox.Show("Invalid File Format");
-                        return;
-                    }
-                    dt.Rows.Add(item);
-                }
 
+                // loop the list 
+                string RNo = null;
+                string CType = null;
+                string qty = null;
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+
+                    foreach (string[] item in lststr)
+                    { 
+                      if ((item.Length) != 9)
+                        {
+                            MessageBox.Show("Invalid File Format");
+                        return;
+                        }
+                    dt.Rows.Add(item);
+                    RNo = item[2];
+                    CType = item[6];
+                    qty = item[8];
+                      //push content to the database
+                       //check if the record exists
+                        String q = "SELECT COUNT(ID) FROM [dbo].[Receipts] WHERE ReceiptNo ='"+RNo+"'AND ItemNo ='"+CType+"'AND ReceivedQty='" + qty+"'";
+                        using (SqlCommand cmd = new SqlCommand(q, conn))
+                        {
+                            try
+                            {
+                                if( (int)cmd.ExecuteScalar()>0)
+                                    {
+                                    continue;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new Exception(ex.Message);
+                            }
+
+                            
+                        }
+                        //insert the record
+                         String q2 = "INSERT INTO [dbo].[Receipts] (EnrolmentNo,VendorTag, ReceiptNo, VendorNo,VendorName,ReceiptDate,ItemNo,Description,ReceivedQty,ImportTime,UserID)" +
+                                    " VALUES ('"+item[0]+"','"
+                                               +item[1]+"','"
+                                               +item[2]+"','"
+                                               +item[3]+"','"
+                                               +item[4]+"','"
+                                               +item[5]+"','"
+                                               +item[6]+"','"
+                                               +item[7]+"','"
+                                               +item[8]+"','"
+                                               +DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','"
+                                               +Environment.UserName
+                                               +"')";
+                          using (SqlCommand cmd = new SqlCommand(q2, conn))
+                          {
+                            try
+                            {
+                               cmd.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new Exception(ex.Message);
+                            }
+                            
+                          }
+                    }
+                    conn.Close();
+                }
 
             }
             //show it in gridview 
             this.dataGridView1.DataSource = dt;
-            //this.dataGridView1.DataBind();
-
-
-
-
-            /*
-            string[] data_col = null;
-            string s = null;
-
-            foreach (string line in lines)
-
-            {
-               s=line.Replace("\",\"", "|").Replace("\"",null);
-                
-               data_col = s.Split('|');
-                //MessageBox.Show(line.Replace("\",\"", "|").Replace("\"", null));
-                //MessageBox.Show(dataGridView1.Columns[0].Name);
-                //return;
-
-
-                dataGridView1.Rows.Add(line);
-
-            }
-            //Console.ReadLine();
-            dataGridView1.DataSource = tbl;
-            */
         }
-
     }
 }

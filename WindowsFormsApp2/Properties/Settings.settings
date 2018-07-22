@@ -12,10 +12,10 @@
       <Value Profile="(Default)">PigletDeath&amp;</Value>
     </Setting>
     <Setting Name="Server" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fcl-nav-pr</Value>
+      <Value Profile="(Default)">fcl-weigh.database.windows.net,1433</Value>
     </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fcl-weigh</Value>
+      <Value Profile="(Default)">fcl-weighing</Value>
     </Setting>
     <Setting Name="BaudRate" Type="System.String" Scope="User">
       <Value Profile="(Default)">9600</Value>
