@@ -51,25 +51,27 @@
             this.ScaleID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CarcassType = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Weighed = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Received = new System.Windows.Forms.TextBox();
             this.Post = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.ClassificationCode = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.NetWeight = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.VendorName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.VendorNo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SlapMark = new System.Windows.Forms.ComboBox();
             this.ReceiptNo = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.MeatPercent = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.UserDetails.SuspendLayout();
             this.ScaleStatus.SuspendLayout();
@@ -101,20 +103,20 @@
             // configurationsToolStripMenuItem
             // 
             this.configurationsToolStripMenuItem.Name = "configurationsToolStripMenuItem";
-            this.configurationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configurationsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.configurationsToolStripMenuItem.Text = "Configurations";
             this.configurationsToolStripMenuItem.Click += new System.EventHandler(this.configurationsToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // dataManagementToolStripMenuItem
@@ -129,14 +131,14 @@
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
             // 
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.exportDataToolStripMenuItem.Text = "Export Data";
             // 
             // reportsToolStripMenuItem
@@ -213,6 +215,7 @@
             this.Refresh.TabIndex = 6;
             this.Refresh.Text = "Refresh";
             this.Refresh.UseVisualStyleBackColor = true;
+            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
             // 
             // CrateWeight
             // 
@@ -267,20 +270,22 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.MeatPercent);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.CarcassType);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.Weighed);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.Received);
             this.groupBox1.Controls.Add(this.Post);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.ClassificationCode);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.NetWeight);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.VendorName);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.VendorNo);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.SlapMark);
             this.groupBox1.Controls.Add(this.ReceiptNo);
@@ -293,10 +298,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // comboBox1
+            // CarcassType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CarcassType.FormattingEnabled = true;
+            this.CarcassType.Items.AddRange(new object[] {
             "G0110, Pig, Carcass",
             "G0111, Sow, Carcass",
             "G0113, Suckling. Carcass",
@@ -314,11 +319,11 @@
             "",
             "",
             ""});
-            this.comboBox1.Location = new System.Drawing.Point(109, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(258, 21);
-            this.comboBox1.TabIndex = 20;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.CarcassType.Location = new System.Drawing.Point(107, 87);
+            this.CarcassType.Name = "CarcassType";
+            this.CarcassType.Size = new System.Drawing.Size(258, 21);
+            this.CarcassType.TabIndex = 20;
+            this.CarcassType.SelectedIndexChanged += new System.EventHandler(this.CarcassType_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -372,17 +377,18 @@
             this.Post.Text = "Post";
             this.Post.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // ClassificationCode
             // 
-            this.textBox4.Location = new System.Drawing.Point(585, 69);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 20);
-            this.textBox4.TabIndex = 13;
+            this.ClassificationCode.Enabled = false;
+            this.ClassificationCode.Location = new System.Drawing.Point(586, 99);
+            this.ClassificationCode.Name = "ClassificationCode";
+            this.ClassificationCode.Size = new System.Drawing.Size(125, 20);
+            this.ClassificationCode.TabIndex = 13;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(464, 73);
+            this.label9.Location = new System.Drawing.Point(473, 102);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(96, 13);
             this.label9.TabIndex = 12;
@@ -405,12 +411,12 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Net Weight";
             // 
-            // textBox2
+            // VendorName
             // 
-            this.textBox2.Location = new System.Drawing.Point(107, 137);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(260, 20);
-            this.textBox2.TabIndex = 9;
+            this.VendorName.Location = new System.Drawing.Point(107, 137);
+            this.VendorName.Name = "VendorName";
+            this.VendorName.Size = new System.Drawing.Size(260, 20);
+            this.VendorName.TabIndex = 9;
             // 
             // label7
             // 
@@ -421,12 +427,12 @@
             this.label7.TabIndex = 8;
             this.label7.Text = "Vendor Name";
             // 
-            // textBox1
+            // VendorNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 111);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(182, 20);
-            this.textBox1.TabIndex = 7;
+            this.VendorNo.Location = new System.Drawing.Point(107, 113);
+            this.VendorNo.Name = "VendorNo";
+            this.VendorNo.Size = new System.Drawing.Size(182, 20);
+            this.VendorNo.TabIndex = 7;
             // 
             // label6
             // 
@@ -440,19 +446,22 @@
             // SlapMark
             // 
             this.SlapMark.FormattingEnabled = true;
-            this.SlapMark.Location = new System.Drawing.Point(109, 60);
+            this.SlapMark.Location = new System.Drawing.Point(107, 61);
             this.SlapMark.Name = "SlapMark";
             this.SlapMark.Size = new System.Drawing.Size(182, 21);
             this.SlapMark.TabIndex = 5;
             this.SlapMark.SelectedIndexChanged += new System.EventHandler(this.SlapMark_SelectedIndexChanged);
+            this.SlapMark.Leave += new System.EventHandler(this.SlapMark_Leave);
             // 
             // ReceiptNo
             // 
             this.ReceiptNo.FormattingEnabled = true;
-            this.ReceiptNo.Location = new System.Drawing.Point(109, 32);
+            this.ReceiptNo.Location = new System.Drawing.Point(107, 33);
             this.ReceiptNo.Name = "ReceiptNo";
             this.ReceiptNo.Size = new System.Drawing.Size(182, 21);
             this.ReceiptNo.TabIndex = 4;
+            this.ReceiptNo.SelectedIndexChanged += new System.EventHandler(this.ReceiptNo_SelectedIndexChanged);
+            this.ReceiptNo.Leave += new System.EventHandler(this.ReceiptNo_Leave);
             // 
             // label5
             // 
@@ -471,6 +480,24 @@
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Receipt Number";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(492, 72);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Meat Percent";
+            // 
+            // MeatPercent
+            // 
+            this.MeatPercent.Enabled = false;
+            this.MeatPercent.Location = new System.Drawing.Point(585, 65);
+            this.MeatPercent.Name = "MeatPercent";
+            this.MeatPercent.Size = new System.Drawing.Size(126, 20);
+            this.MeatPercent.TabIndex = 22;
+            this.MeatPercent.TextChanged += new System.EventHandler(this.MeatPercent_TextChanged);
             // 
             // Form1
             // 
@@ -528,19 +555,21 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox Received;
         private System.Windows.Forms.Button Post;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox ClassificationCode;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox NetWeight;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox VendorName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox VendorNo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox SlapMark;
         private System.Windows.Forms.ComboBox ReceiptNo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CarcassType;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox MeatPercent;
+        private System.Windows.Forms.Label label13;
     }
 }
 

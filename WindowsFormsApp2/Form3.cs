@@ -86,19 +86,19 @@ namespace WindowsFormsApp2
                         throw new Exception(ex.Message);
                     }
 
-                    foreach (string[] item in lststr)
-                    { 
-                      if ((item.Length) != 9)
-                        {
+                        foreach (string[] item in lststr)
+                        { 
+                            if ((item.Length) != 9)
+                            {
                             MessageBox.Show("Invalid File Format");
-                        return;
-                        }
-                    dt.Rows.Add(item);
-                    RNo = item[2];
-                    CType = item[6];
-                    qty = item[8];
-                      //push content to the database
-                       //check if the record exists
+                            return;
+                            }
+                        dt.Rows.Add(item);
+                        RNo = item[2];
+                        CType = item[6];
+                        qty = item[8];
+                        //push content to the database
+                        //check if the record exists
                         String q = "SELECT COUNT(ID) FROM [dbo].[Receipts] WHERE ReceiptNo ='"+RNo+"'AND ItemNo ='"+CType+"'AND ReceivedQty='" + qty+"'";
                         using (SqlCommand cmd = new SqlCommand(q, conn))
                         {
