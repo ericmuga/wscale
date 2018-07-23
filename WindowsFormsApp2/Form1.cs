@@ -27,6 +27,16 @@ namespace WindowsFormsApp2
 
             InitializeComponent();
             {
+                User.Text = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                // Initialize the screen items
+
+                ScaleID.Text = Properties.Settings.Default.ScaleLID;
+
+                //fake reading before connecting to the scale
+                Weight.Text = "65.00";
+                CrateWeight.Text = Properties.Settings.Default.CrateWeight;
+
+
                 // initialize comboboxes
 
                 using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -39,7 +49,7 @@ namespace WindowsFormsApp2
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception(ex.Message);
+                        MessageBox.Show(ex.Message);
                     }
 
                     try
@@ -70,14 +80,7 @@ namespace WindowsFormsApp2
                     conn.Close();
                 }
 
-                User.Text = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                // Initialize the screen items
-
-                ScaleID.Text = Properties.Settings.Default.ScaleLID;
-
-                //fake reading before connecting to the scale
-                Weight.Text = "80.00";
-                CrateWeight.Text = Properties.Settings.Default.CrateWeight;
+                
                 
 
                 try
@@ -147,7 +150,9 @@ namespace WindowsFormsApp2
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    
+                    MessageBox.Show(ex.Message);
+                    return;
                 }
                 String q = "SELECT * FROM [dbo].[Receipts] WHERE VendorTag ='" + Slap + "'";
                 using (SqlCommand cmd = new SqlCommand(q, conn))
@@ -207,7 +212,8 @@ namespace WindowsFormsApp2
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    MessageBox.Show(ex.Message);
+                    return;
                 }
                 String q = "SELECT * FROM [dbo].[Receipts] WHERE ReceiptNo ='" + RNo + "'";
                 using (SqlCommand cmd = new SqlCommand(q, conn))
@@ -243,7 +249,11 @@ namespace WindowsFormsApp2
 
             if (ReceiptNo.Text == "")
             {
-                MessageBox.Show("Please fill in Receipt");
+                MessageBox.Show("Invalid Receipt Number!");
+                VendorName.Text = "";
+                VendorNo.Text = "";
+                SlapMark.Text ="";
+                return;
             }
             string RNo = ReceiptNo.Text;
 
@@ -257,7 +267,9 @@ namespace WindowsFormsApp2
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    MessageBox.Show(ex.Message);
+                    return;
+
                 }
                 String q = "SELECT * FROM [dbo].[Receipts] WHERE ReceiptNo ='" + RNo + "'";
                 using (SqlCommand cmd = new SqlCommand(q, conn))
@@ -270,7 +282,7 @@ namespace WindowsFormsApp2
                         if (!reader.Read())
                         {
                             MessageBox.Show("Invalid receipt number. Please confirm before proceeding");
-                            // MeatPercent.Enabled = false;
+                            return;
                         }
                         else
                         {
@@ -295,6 +307,7 @@ namespace WindowsFormsApp2
             if (SlapMark.Text == "")
             {
                 MessageBox.Show("Please fill in Slap Mark");
+                return;
             }
             string Slap = SlapMark.Text;
 
@@ -308,7 +321,8 @@ namespace WindowsFormsApp2
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    MessageBox.Show(ex.Message);
+                    return;
                 }
                 String q = "SELECT * FROM [dbo].[Receipts] WHERE VendorTag ='" + Slap + "'";
                 using (SqlCommand cmd = new SqlCommand(q, conn))
@@ -347,9 +361,178 @@ namespace WindowsFormsApp2
                 CType= CarcassType.Text.Substring(0, 5);
                
             }
-
+            if (CarcassType.Text == "")
+            {
+                MessageBox.Show("Invalid Carcass Type Please confirm before proceeding");
+            }
+            else
+            {
+                MeatPercent.Enabled = true;
+                MeatPercent.ReadOnly = false;
+            }
             MeatPercent.Enabled = true;
             MeatPercent.ReadOnly = false;
+
+            
+                if (MeatPercent.Text != "")
+                {
+                    string[] specialFarms = { "PF99901", "PF99902", "PF99903", "PF99904", "PF99905" };
+
+                    try
+                    {
+                        MPerc = Convert.ToDouble(MeatPercent.Text);
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Please key in an integer or decimal for the meat percent Value");
+                    }
+                    catch (OverflowException ex)
+                    {
+                        MessageBox.Show("MeatPercent is outside the range." + ex.Message);
+                    }
+                    if (specialFarms.Contains(VendorNo.Text))
+                    {
+                        if (MPerc >= 0 && MPerc <= 20 && CType == "G0110" && NT < 40)
+                        {
+                            ClassificationCode.Text = "RMPK-SUB40";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 40 && NT <= 49)
+                        {
+                            ClassificationCode.Text = "RM-CLS05";
+                        }
+                        if (MPerc >= 8 && MPerc <= 10 && CType == "G0110" && NT >= 56 && NT <= 59)
+                        {
+                            ClassificationCode.Text = "RM-CLS02";
+                        }
+                        if (MPerc >= 0 && MPerc <= 7 && CType == "G0110" && NT >= 56 && NT <= 75)
+                        {
+                            ClassificationCode.Text = "RM-CLS02";
+                        }
+                        if (MPerc >= 11 && MPerc <= 100 && CType == "G0110" && NT >= 56 && NT <= 75)
+                        {
+                            ClassificationCode.Text = "RM-CLS02";
+                        }
+                        if (MPerc >= 8 && MPerc <= 10 && CType == "G0110" && NT >= 60 && NT <= 75)
+                        {
+                            ClassificationCode.Text = "RM-CLS01";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 76 && NT <= 85)
+                        {
+                            ClassificationCode.Text = "RM-CLS03";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 50 && NT <= 55)
+                        {
+                            ClassificationCode.Text = "RM-CLS04";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 86 && NT <= 100)
+                        {
+                            ClassificationCode.Text = "RM-CLS06";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 101 && NT <= 120)
+                        {
+                            ClassificationCode.Text = "RM-CLS07";
+                        }
+
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT > 120)
+                        {
+                            ClassificationCode.Text = "RM-CLS08";
+                        }
+                        if (CType == "G0111")
+                        {
+                            ClassificationCode.Text = "SOW-RM";
+                        }
+                        if (CType == "G0113" && NT >= 5 && NT <= 7)
+                        {
+                            ClassificationCode.Text = "RM-SK1";
+                        }
+                        if (CType == "G0113" && NT >= 7 && NT < 9)
+                        {
+                            ClassificationCode.Text = "RM-SK2";
+                        }
+                        if (CType == "G0113" && NT >= 9 && NT < 16)
+                        {
+                            ClassificationCode.Text = "RM-SK3";
+                        }
+                        if (CType == "G0113" && NT >= 17 && NT < 20)
+                        {
+                            ClassificationCode.Text = "RM-SK4";
+                        }
+                        if (CType == "G0113" && NT >= 9 && NT < 20)
+                        {
+                            ClassificationCode.Text = "RM-SK5";
+                        }
+                    }
+                    else
+                    {
+                        if (MPerc >= 0 && MPerc <= 20 && CType == "G0110" && NT < 40)
+                        {
+                            ClassificationCode.Text = "PK-SUB40";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 40 && NT <= 49)
+                        {
+                            ClassificationCode.Text = "CLS-05";
+                        }
+                        if (MPerc >= 8 && MPerc <= 10 && CType == "G0110" && NT >= 50 && NT <= 59)
+                        {
+                            ClassificationCode.Text = "CLS-02";
+                        }
+                        if (MPerc >= 0 && MPerc <= 7 && CType == "G0110" && NT >= 56 && NT <= 75)
+                        {
+                            ClassificationCode.Text = "CLS-02";
+                        }
+                        if (MPerc >= 11 && MPerc <= 100 && CType == "G0110" && NT >= 56 && NT <= 75)
+                        {
+                            ClassificationCode.Text = "CLS-02";
+                        }
+                        if (MPerc >= 8 && MPerc <= 10 && CType == "G0110" && NT >= 60 && NT <= 75)
+                        {
+                            ClassificationCode.Text = "CLS-01";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 76 && NT <= 85)
+                        {
+                            ClassificationCode.Text = "CLS-03";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 50 && NT <= 55)
+                        {
+                            ClassificationCode.Text = "CLS-04";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 86 && NT <= 100)
+                        {
+                            ClassificationCode.Text = "CLS-06";
+                        }
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT >= 101 && NT <= 120)
+                        {
+                            ClassificationCode.Text = "CLS-07";
+                        }
+
+                        if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT > 120)
+                        {
+                            ClassificationCode.Text = "CLS-08";
+                        }
+                        if (CType == "G0111")
+                        {
+                            ClassificationCode.Text = "SOW-3P";
+                        }
+                        if (CType == "G0113" && NT >= 5 && NT < 8)
+                        {
+                            ClassificationCode.Text = "3P-SK4";
+                        }
+                        if (CType == "G0113" && NT >= 9 && NT < 20)
+                        {
+                            ClassificationCode.Text = "3P-SK5";
+                        }
+                    }
+                }
+                else
+                {
+                ClassificationCode.Text = "";
+                 ClassificationCode.Enabled = false;
+                }
+                ClassificationCode.Enabled = true;
+
+
+            
+
 
 
         }
@@ -361,9 +544,10 @@ namespace WindowsFormsApp2
                 CType = CarcassType.Text.Substring(0, 5);
 
             }
-            if (CarcassType.Text == "")
+            if (CarcassType.Text =="")
             {
-                MessageBox.Show("Invalid Slap Mark Please confirm before proceeding");
+                MessageBox.Show("Invalid Carcass Type Please confirm before proceeding");
+                CarcassType.Focus();
             }
             else
             {
@@ -374,8 +558,9 @@ namespace WindowsFormsApp2
 
         }
 
-        private void MeatPercent_TextChanged(object sender, EventArgs e)
-        {
+        
+            private void MeatPercent_TextChanged(object sender, EventArgs e)
+            {
             // Get the Classification
             if (MeatPercent.Text != "")
             {
@@ -475,11 +660,11 @@ namespace WindowsFormsApp2
                     {
                         ClassificationCode.Text = "CLS-05";
                     }
-                    if (MPerc >= 8 && MPerc <= 10 && CType == "G0101" && NT >= 50 && NT <= 59)
+                    if (MPerc >= 8 && MPerc <= 10 && CType == "G0110" && NT >= 50 && NT <= 59)
                     {
                         ClassificationCode.Text = "CLS-02";
                     }
-                    if (MPerc >= 0 && MPerc <= 7 && CType == "G0101" && NT >= 56 && NT <= 75)
+                    if (MPerc >= 0 && MPerc <= 7 && CType == "G0110" && NT >= 56 && NT <= 75)
                     {
                         ClassificationCode.Text = "CLS-02";
                     }
@@ -508,7 +693,7 @@ namespace WindowsFormsApp2
                         ClassificationCode.Text = "CLS-07";
                     }
 
-                    if (MPerc >= 0 && MPerc <= 100 && CType == "G0101" && NT > 120)
+                    if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT > 120)
                     {
                         ClassificationCode.Text = "CLS-08";
                     }
@@ -528,6 +713,8 @@ namespace WindowsFormsApp2
             }
             else
             {
+                ClassificationCode.Text = "";
+                ClassificationCode.Enabled = true;
 
             }
             ClassificationCode.Enabled = true;
@@ -635,11 +822,11 @@ namespace WindowsFormsApp2
                     {
                         ClassificationCode.Text = "CLS-05";
                     }
-                    if (MPerc >= 8 && MPerc <= 10 && CType == "G0101" && NT >= 50 && NT <= 59)
+                    if (MPerc >= 8 && MPerc <= 10 && CType == "G0110" && NT >= 50 && NT <= 59)
                     {
                         ClassificationCode.Text = "CLS-02";
                     }
-                    if (MPerc >= 0 && MPerc <= 7 && CType == "G0101" && NT >= 56 && NT <= 75)
+                    if (MPerc >= 0 && MPerc <= 7 && CType == "G0110" && NT >= 56 && NT <= 75)
                     {
                         ClassificationCode.Text = "CLS-02";
                     }
@@ -668,7 +855,7 @@ namespace WindowsFormsApp2
                         ClassificationCode.Text = "CLS-07";
                     }
 
-                    if (MPerc >= 0 && MPerc <= 100 && CType == "G0101" && NT > 120)
+                    if (MPerc >= 0 && MPerc <= 100 && CType == "G0110" && NT > 120)
                     {
                         ClassificationCode.Text = "CLS-08";
                     }
@@ -697,6 +884,26 @@ namespace WindowsFormsApp2
         {
             // get scale readings
 
+
+        }
+
+        private void Post_Click(object sender, EventArgs e)
+        {
+            //check if all necessary fields are there, and valid.
+            //username
+
+            //ReceiptNo
+            if (ReceiptNo.Text == "")
+            {
+                MessageBox.Show("The receipt number must not be blank");
+                ReceiptNo.Focus();
+
+            }
+                
+            
+            //check if the database has exceeded the count for that farmer
+            // insert the record into the database.
+             
 
         }
     }

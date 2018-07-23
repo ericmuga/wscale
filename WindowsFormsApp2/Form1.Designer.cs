@@ -51,6 +51,8 @@
             this.ScaleID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MeatPercent = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.CarcassType = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Weighed = new System.Windows.Forms.TextBox();
@@ -70,8 +72,6 @@
             this.ReceiptNo = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.MeatPercent = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.UserDetails.SuspendLayout();
             this.ScaleStatus.SuspendLayout();
@@ -296,11 +296,29 @@
             this.groupBox1.Size = new System.Drawing.Size(774, 231);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Details";
+            // 
+            // MeatPercent
+            // 
+            this.MeatPercent.Enabled = false;
+            this.MeatPercent.Location = new System.Drawing.Point(585, 65);
+            this.MeatPercent.Name = "MeatPercent";
+            this.MeatPercent.Size = new System.Drawing.Size(126, 20);
+            this.MeatPercent.TabIndex = 22;
+            this.MeatPercent.TextChanged += new System.EventHandler(this.MeatPercent_TextChanged);
+            this.MeatPercent.Leave += new System.EventHandler(this.MeatPercent_Leave);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(492, 72);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Meat Percent";
             // 
             // CarcassType
             // 
-            this.CarcassType.FormattingEnabled = true;
             this.CarcassType.Items.AddRange(new object[] {
             "G0110, Pig, Carcass",
             "G0111, Sow, Carcass",
@@ -324,6 +342,7 @@
             this.CarcassType.Size = new System.Drawing.Size(258, 21);
             this.CarcassType.TabIndex = 20;
             this.CarcassType.SelectedIndexChanged += new System.EventHandler(this.CarcassType_SelectedIndexChanged);
+            this.CarcassType.Leave += new System.EventHandler(this.CarcassType_Leave);
             // 
             // label12
             // 
@@ -341,6 +360,7 @@
             this.Weighed.ReadOnly = true;
             this.Weighed.Size = new System.Drawing.Size(91, 20);
             this.Weighed.TabIndex = 18;
+            this.Weighed.Visible = false;
             // 
             // label11
             // 
@@ -350,6 +370,7 @@
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 17;
             this.label11.Text = "Weighed";
+            this.label11.Visible = false;
             // 
             // label10
             // 
@@ -359,6 +380,7 @@
             this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 16;
             this.label10.Text = "Received";
+            this.label10.Visible = false;
             // 
             // Received
             // 
@@ -367,6 +389,7 @@
             this.Received.ReadOnly = true;
             this.Received.Size = new System.Drawing.Size(87, 20);
             this.Received.TabIndex = 15;
+            this.Received.Visible = false;
             // 
             // Post
             // 
@@ -376,12 +399,14 @@
             this.Post.TabIndex = 14;
             this.Post.Text = "Post";
             this.Post.UseVisualStyleBackColor = true;
+            this.Post.Click += new System.EventHandler(this.Post_Click);
             // 
             // ClassificationCode
             // 
             this.ClassificationCode.Enabled = false;
             this.ClassificationCode.Location = new System.Drawing.Point(586, 99);
             this.ClassificationCode.Name = "ClassificationCode";
+            this.ClassificationCode.ReadOnly = true;
             this.ClassificationCode.Size = new System.Drawing.Size(125, 20);
             this.ClassificationCode.TabIndex = 13;
             // 
@@ -415,6 +440,7 @@
             // 
             this.VendorName.Location = new System.Drawing.Point(107, 137);
             this.VendorName.Name = "VendorName";
+            this.VendorName.ReadOnly = true;
             this.VendorName.Size = new System.Drawing.Size(260, 20);
             this.VendorName.TabIndex = 9;
             // 
@@ -431,6 +457,7 @@
             // 
             this.VendorNo.Location = new System.Drawing.Point(107, 113);
             this.VendorNo.Name = "VendorNo";
+            this.VendorNo.ReadOnly = true;
             this.VendorNo.Size = new System.Drawing.Size(182, 20);
             this.VendorNo.TabIndex = 7;
             // 
@@ -480,24 +507,6 @@
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Receipt Number";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(492, 72);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 13);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "Meat Percent";
-            // 
-            // MeatPercent
-            // 
-            this.MeatPercent.Enabled = false;
-            this.MeatPercent.Location = new System.Drawing.Point(585, 65);
-            this.MeatPercent.Name = "MeatPercent";
-            this.MeatPercent.Size = new System.Drawing.Size(126, 20);
-            this.MeatPercent.TabIndex = 22;
-            this.MeatPercent.TextChanged += new System.EventHandler(this.MeatPercent_TextChanged);
             // 
             // Form1
             // 
