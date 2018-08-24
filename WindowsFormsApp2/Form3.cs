@@ -15,13 +15,11 @@ namespace WindowsFormsApp2
 {
     public partial class Form3 : Form
     {
-        string _connectionString = $"Server={Properties.Settings.Default.Server};Initial Catalog={Properties.Settings.Default.Database};Persist Security Info=False;User ID={Properties.Settings.Default.UserName};Password={Properties.Settings.Default.Password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        string _connectionString = $"Server={Properties.Settings.Default.Server};Initial Catalog={Properties.Settings.Default.Database};Persist Security Info=False;User ID={Properties.Settings.Default.UserName};Password={Properties.Settings.Default.Password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
         private string[] loadedInput = null;
         public Form3()
         {
             InitializeComponent();
-
-            
 
         }
 
@@ -83,7 +81,8 @@ namespace WindowsFormsApp2
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception(ex.Message);
+                        MessageBox.Show(ex.Message);
+                        return;
                     }
 
                         foreach (string[] item in lststr)

@@ -36,6 +36,8 @@
             this.dataManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importedReceiptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportedSlaughterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deliveriesPerPeriodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deliveriesPerVendorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +74,7 @@
             this.ReceiptNo = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.UserDetails.SuspendLayout();
             this.ScaleStatus.SuspendLayout();
@@ -83,7 +86,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.dataManagementToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.reportsToolStripMenuItem,
+            this.refreshToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -123,7 +127,9 @@
             // 
             this.dataManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importDataToolStripMenuItem,
-            this.exportDataToolStripMenuItem});
+            this.exportDataToolStripMenuItem,
+            this.importedReceiptsToolStripMenuItem,
+            this.exportedSlaughterToolStripMenuItem});
             this.dataManagementToolStripMenuItem.Name = "dataManagementToolStripMenuItem";
             this.dataManagementToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
             this.dataManagementToolStripMenuItem.Text = "Data Management";
@@ -131,15 +137,29 @@
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
             // 
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportDataToolStripMenuItem.Text = "Export Data";
+            // 
+            // importedReceiptsToolStripMenuItem
+            // 
+            this.importedReceiptsToolStripMenuItem.Name = "importedReceiptsToolStripMenuItem";
+            this.importedReceiptsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importedReceiptsToolStripMenuItem.Text = "Imported Receipts";
+            this.importedReceiptsToolStripMenuItem.Click += new System.EventHandler(this.importedReceiptsToolStripMenuItem_Click);
+            // 
+            // exportedSlaughterToolStripMenuItem
+            // 
+            this.exportedSlaughterToolStripMenuItem.Name = "exportedSlaughterToolStripMenuItem";
+            this.exportedSlaughterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportedSlaughterToolStripMenuItem.Text = "Slaughter Data";
+            this.exportedSlaughterToolStripMenuItem.Click += new System.EventHandler(this.exportedSlaughterToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
@@ -238,9 +258,10 @@
             // 
             this.Weight.Location = new System.Drawing.Point(173, 53);
             this.Weight.Name = "Weight";
-            this.Weight.ReadOnly = true;
             this.Weight.Size = new System.Drawing.Size(109, 20);
             this.Weight.TabIndex = 3;
+            this.Weight.TextChanged += new System.EventHandler(this.Weight_TextChanged);
+            this.Weight.Leave += new System.EventHandler(this.Weight_Leave);
             // 
             // label2
             // 
@@ -331,12 +352,7 @@
             "G0119, Dead Pig [Lairage] -3rdP Fmr",
             "G0120, Dead Pig [Self Trp] -3rdP Fmr",
             "G0121, Scrapped Pig, Carcass",
-            "G0122, Dead Sow - Rosemark",
-            "",
-            "",
-            "",
-            "",
-            ""});
+            "G0122, Dead Sow - Rosemark"});
             this.CarcassType.Location = new System.Drawing.Point(107, 87);
             this.CarcassType.Name = "CarcassType";
             this.CarcassType.Size = new System.Drawing.Size(258, 21);
@@ -508,6 +524,13 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Receipt Number";
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -519,7 +542,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "User";
+            this.Text = "Farmers Choice Pig Slaughter Weighing Station";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.UserDetails.ResumeLayout(false);
@@ -579,6 +602,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox MeatPercent;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ToolStripMenuItem importedReceiptsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportedSlaughterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }
 

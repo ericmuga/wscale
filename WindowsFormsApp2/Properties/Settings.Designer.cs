@@ -61,7 +61,7 @@ namespace WindowsFormsApp2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fcl-weigh.database.windows.net,1433")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fcl-nav-pr,1433")]
         public string Server {
             get {
                 return ((string)(this["Server"]));
@@ -73,7 +73,7 @@ namespace WindowsFormsApp2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fcl-weighing")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fcl-weigh")]
         public string Database {
             get {
                 return ((string)(this["Database"]));
@@ -116,6 +116,17 @@ namespace WindowsFormsApp2.Properties {
             }
             set {
                 this["CrateWeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=FCL-NAV-PR;Initial Catalog=fcl-weigh;Persist Security Info=True;User " +
+            "ID=WeighAdmin;Password=PigletDeath&")]
+        public string fcl_weighConnectionString {
+            get {
+                return ((string)(this["fcl_weighConnectionString"]));
             }
         }
     }

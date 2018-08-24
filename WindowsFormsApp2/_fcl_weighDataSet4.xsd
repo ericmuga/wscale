@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="_fcl_weighDataSet4" targetNamespace="http://tempuri.org/_fcl_weighDataSet4.xsd" xmlns:mstns="http://tempuri.org/_fcl_weighDataSet4.xsd" xmlns="http://tempuri.org/_fcl_weighDataSet4.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="fcl_weighConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="fcl_weighConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp2.Properties.Settings.GlobalReference.Default.fcl_weighConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SlaughterDataTableAdapter" GeneratorDataComponentClassName="SlaughterDataTableAdapter" Name="SlaughterData" UserDataComponentName="SlaughterDataTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="fcl_weighConnectionString (Settings)" DbObjectName="[fcl-weigh].dbo.SlaughterData" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT SlaughterTime, ReceiptNo, ItemNo, StockWeight, MeatPercent, [Classification Code] FROM dbo.SlaughterData</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SlaughterTime" DataSetColumn="SlaughterTime" />
+              <Mapping SourceColumn="ReceiptNo" DataSetColumn="ReceiptNo" />
+              <Mapping SourceColumn="ItemNo" DataSetColumn="ItemNo" />
+              <Mapping SourceColumn="StockWeight" DataSetColumn="StockWeight" />
+              <Mapping SourceColumn="MeatPercent" DataSetColumn="MeatPercent" />
+              <Mapping SourceColumn="Classification Code" DataSetColumn="Classification Code" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="fcl_weighConnectionString (Settings)" DbObjectName="[fcl-weigh].dbo.SlaughterData" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT SlaughterTime, ReceiptNo, ItemNo, StockWeight, MeatPercent, [Classification Code] FROM dbo.SlaughterData
+ORDER BY SlaughterTime</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="fcl_weighConnectionString (Settings)" DbObjectName="[fcl-weigh].dbo.SlaughterData" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT SlaughterTime, ReceiptNo, ItemNo, StockWeight, MeatPercent, [Classification Code] FROM dbo.SlaughterData</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="_fcl_weighDataSet4" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="_fcl_weighDataSet4" msprop:Generator_UserDSName="_fcl_weighDataSet4">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SlaughterData" msprop:Generator_TableClassName="SlaughterDataDataTable" msprop:Generator_TableVarName="tableSlaughterData" msprop:Generator_RowChangedName="SlaughterDataRowChanged" msprop:Generator_TablePropName="SlaughterData" msprop:Generator_RowDeletingName="SlaughterDataRowDeleting" msprop:Generator_RowChangingName="SlaughterDataRowChanging" msprop:Generator_RowEvHandlerName="SlaughterDataRowChangeEventHandler" msprop:Generator_RowDeletedName="SlaughterDataRowDeleted" msprop:Generator_RowClassName="SlaughterDataRow" msprop:Generator_UserTableName="SlaughterData" msprop:Generator_RowEvArgName="SlaughterDataRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SlaughterTime" msprop:Generator_ColumnVarNameInTable="columnSlaughterTime" msprop:Generator_ColumnPropNameInRow="SlaughterTime" msprop:Generator_ColumnPropNameInTable="SlaughterTimeColumn" msprop:Generator_UserColumnName="SlaughterTime" type="xs:dateTime" />
+              <xs:element name="ReceiptNo" msprop:Generator_ColumnVarNameInTable="columnReceiptNo" msprop:Generator_ColumnPropNameInRow="ReceiptNo" msprop:Generator_ColumnPropNameInTable="ReceiptNoColumn" msprop:Generator_UserColumnName="ReceiptNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItemNo" msprop:Generator_ColumnVarNameInTable="columnItemNo" msprop:Generator_ColumnPropNameInRow="ItemNo" msprop:Generator_ColumnPropNameInTable="ItemNoColumn" msprop:Generator_UserColumnName="ItemNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StockWeight" msprop:Generator_ColumnVarNameInTable="columnStockWeight" msprop:Generator_ColumnPropNameInRow="StockWeight" msprop:Generator_ColumnPropNameInTable="StockWeightColumn" msprop:Generator_UserColumnName="StockWeight" type="xs:decimal" />
+              <xs:element name="MeatPercent" msprop:Generator_ColumnVarNameInTable="columnMeatPercent" msprop:Generator_ColumnPropNameInRow="MeatPercent" msprop:Generator_ColumnPropNameInTable="MeatPercentColumn" msprop:Generator_UserColumnName="MeatPercent" type="xs:decimal" />
+              <xs:element name="Classification_x0020_Code" msprop:Generator_ColumnVarNameInTable="columnClassification_Code" msprop:Generator_ColumnPropNameInRow="Classification_Code" msprop:Generator_ColumnPropNameInTable="Classification_CodeColumn" msprop:Generator_UserColumnName="Classification Code">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

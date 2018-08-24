@@ -63,8 +63,45 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_fcl_weighDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_fcl_weighDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_fcl_weighDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_fcl_weighDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_fcl_weighDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_fcl_weighDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_fcl_weighDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_fcl_weighDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_fcl_weighDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_fcl_weighDataSet4.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -73,6 +110,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,6 +135,61 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_fcl_weighDataSet.xsc">
+      <DependentUpon>_fcl_weighDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_fcl_weighDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_fcl_weighDataSet.xss">
+      <DependentUpon>_fcl_weighDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet1.xsc">
+      <DependentUpon>_fcl_weighDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_fcl_weighDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_fcl_weighDataSet1.xss">
+      <DependentUpon>_fcl_weighDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet2.xsc">
+      <DependentUpon>_fcl_weighDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_fcl_weighDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_fcl_weighDataSet2.xss">
+      <DependentUpon>_fcl_weighDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet3.xsc">
+      <DependentUpon>_fcl_weighDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_fcl_weighDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_fcl_weighDataSet3.xss">
+      <DependentUpon>_fcl_weighDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet4.xsc">
+      <DependentUpon>_fcl_weighDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="_fcl_weighDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_fcl_weighDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_fcl_weighDataSet4.xss">
+      <DependentUpon>_fcl_weighDataSet4.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

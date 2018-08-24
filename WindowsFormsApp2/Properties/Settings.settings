@@ -12,10 +12,10 @@
       <Value Profile="(Default)">PigletDeath&amp;</Value>
     </Setting>
     <Setting Name="Server" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fcl-weigh.database.windows.net,1433</Value>
+      <Value Profile="(Default)">fcl-nav-pr,1433</Value>
     </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fcl-weighing</Value>
+      <Value Profile="(Default)">fcl-weigh</Value>
     </Setting>
     <Setting Name="BaudRate" Type="System.String" Scope="User">
       <Value Profile="(Default)">9600</Value>
@@ -25,6 +25,14 @@
     </Setting>
     <Setting Name="CrateWeight" Type="System.String" Scope="User">
       <Value Profile="(Default)">2.40</Value>
+    </Setting>
+    <Setting Name="fcl_weighConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=FCL-NAV-PR;Initial Catalog=fcl-weigh;Persist Security Info=True;User ID=WeighAdmin;Password=PigletDeath&amp;amp;&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=FCL-NAV-PR;Initial Catalog=fcl-weigh;Persist Security Info=True;User ID=WeighAdmin;Password=PigletDeath&amp;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
